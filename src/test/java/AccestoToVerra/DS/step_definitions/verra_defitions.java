@@ -18,6 +18,7 @@ public class verra_defitions {
     public void test() throws InterruptedException {
         Driver.getDriver().get(ConfigurationReader.getProperty("chrome"));
         Driver.getDriver().manage().window().maximize();
+        Driver.getDriver().manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
         WebElement report = Driver.getDriver().findElement(By.xpath("//a[@role='button']"));
         report.click();
@@ -28,12 +29,10 @@ public class verra_defitions {
         WebElement searchBtn = Driver.getDriver().findElement(By.xpath("//*[@id=\"search_sel_id\"]"));
         searchBtn.sendKeys("4358");
 
-        Driver.getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-
         WebElement searchBtn1 = Driver.getDriver().findElement(By.xpath("//button[@type='submit']"));
         searchBtn1.click();
 
-        WebElement jobName = Driver.getDriver().findElement(By.xpath("//*[@id=\"verra-application\"]/div/apx-search-page/div/apx-search-container/div/div[2]/div/div[2]/apx-project-search-results/div/div/kendo-grid/div/kendo-grid-list/div/div[1]/table/tbody/tr/td[2]/a"));
+        WebElement jobName = Driver.getDriver().findElement(By.xpath("//a[contains(text(),'Xiangyang AWMS GHG Mitigation Project in Hubei Pro')]"));
         jobName.click();
 
         // verify
